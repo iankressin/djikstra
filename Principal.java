@@ -12,9 +12,6 @@ public class Principal {
 		// Vetor das distancias
 		// Incializado com o tamanho do numero de verticess
 		int[] distancia = new int[V];
-
-		//Vetor dos pais de um vertice
-		int[] pi = new int [V];
 		
 		// Instancia os valores para cada um dos vetores
 		// Dando a todos os valores de distancia infinito
@@ -22,7 +19,6 @@ public class Principal {
 		for(int i = 0; i < V; i++) {
 			distancia[i] = Integer.MAX_VALUE;
 			visitado[i] = false;
-			pi[i] = -1;
 		}
 		
 		/*
@@ -30,7 +26,6 @@ public class Principal {
 		* iniciar de um ponto desejado e nao de 0
 		*/
 		distancia[s] = 0;
-		pi[s] = 0;
 		
 		// Acha o vertice com a menor distancia
 		for(int i = 0; i < V - 1; i++) {
@@ -42,7 +37,6 @@ public class Principal {
 					int novaDistancia = distancia[menorVertice] + grafo[menorVertice][j];
 					if(novaDistancia < distancia[j]){
 						distancia[j] = novaDistancia;
-						pi[j] = j;
 					} 
 				}
 			}
@@ -55,7 +49,6 @@ public class Principal {
 		System.out.println("Destino: " + destino);
 		//Print
 		for(int i = 0; i < V; i++){
-			System.out.println("PI: " + pi[i]);
 			if(i == destino){
 				System.out.println("Menor distância: " + distancia[i]);
 			}
